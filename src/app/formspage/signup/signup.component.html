@@ -1,0 +1,65 @@
+<form class="container w-50 "  (ngSubmit)="postForm()" [formGroup]="checkForm" #form="ngForm">
+    <fieldset>
+        <legend class="text-center mb-0">Signup</legend>
+        <hr class="bg-warning p-0">
+        <div class="form-group">
+            <label>Email</label>
+            <input  class="form-control"name="email" formControlName="emailId" placeholder="Email" type="email"  required>
+        </div>
+        <div *ngIf="emailId.invalid && emailId.touched" class="text-danger">
+            <div *ngIf="emailId.errors.required">
+                Email is required
+            </div>
+            <div *ngIf="emailId.errors.email">
+                Email not valid
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="pwd">Password</label>
+            <input class="form-control" name="pwd" formControlName="passWord" placeholder="********" type="password"  required>
+        </div>
+        <div *ngIf="passWord.invalid && passWord.touched" class="text-danger">
+            <div *ngIf="passWord.errors.required">
+                Password is required
+            </div>
+            <div *ngIf="passWord.errors.minlength">
+                Password must min 6 characters
+            </div>
+        </div>
+        <div class="form-group ">
+            <label for="country">Country</label>
+            <input class="form-control" name="country" formControlName="country"  placeholder="Country" type="text">
+        </div>
+        <div *ngIf="country.invalid && country.touched" class="text-danger">
+            <div *ngIf="country.errors.required">
+                Country is required
+            </div>
+            <div *ngIf="country.errors.pattern">
+                Invalid Country
+            </div>
+        </div>
+        <div class="form-group ">
+            <label for="gender">Gender</label>
+        <select name="gender" formControlName="gender"  class="form-control">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+        </div>
+        <div class="form-group ">
+            <label for="code">Code</label>
+            <input class="form-control "  name="code" formControlName="code" placeholder="Code" type="text">
+        </div>
+        <div *ngIf="code.invalid && code.touched" class="text-danger">
+            <div *ngIf="code.errors.required">
+                Code is required
+            </div>
+            <div *ngIf="code.errors.codeInavlid">
+                Code is Invalid
+            </div>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary mr-1 " style="width: 49%" [disabled]="(!form.valid)">Submit</button>
+            <button type="reset" class="btn btn-secondary " style="width: 49%">Cancel</button>
+        </div>
+    </fieldset>
+</form>

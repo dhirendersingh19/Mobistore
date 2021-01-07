@@ -1,0 +1,15 @@
+
+<!-- ==> Displaying Local user details  
+     ==> details taken from localstorage which was initialize start of the page (data can be seen in App component) -->
+<h5 class="text-center mt-2 text-primary">List of Users</h5>
+<nav class="nav flex-column nav-bar ml-5 w-25 float-left">
+    <ul class="navbar-nav">
+        <li class="nav-item" style="font-size: 17px;">LIST OF LOCALSTORAGE USERS</li>
+        <li class="nav-item "  *ngFor="let list of res"><a class="nav-link text-warning" (click)="removeLocalSigUp()" [routerLink]="['details',list.name]">{{ list.name.toUpperCase() }}</a></li>
+    </ul>
+    <ul class="navbar-nav">
+        <li class="nav-item"  *ngIf="(nullStatus)"   style="font-size: 17px;">LIST OF SIGNUP USERS</li>
+        <li class="nav-item"  *ngFor="let list of signupOld"><a class="nav-link text-warning" (click)="setLocalSignUp()" [routerLink]="['details',list.email]">{{ list.email }}</a></li>
+    </ul>
+</nav>
+<router-outlet></router-outlet>

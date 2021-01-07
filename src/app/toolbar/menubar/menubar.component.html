@@ -1,0 +1,50 @@
+<nav class="navbar navbar-expand-lg topnavbar navbar-dark sticky-top  bg-light" >
+    <div class="container">
+        <a class="navbar-brand" routerLink="home">
+            <img src="../../assets/images/logo/logowhite.png" style="margin: 0; padding:0;" class="img-fluid" alt="photo" width=50px height=50px><span>MOBISTORE</span>
+        </a>
+        
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarColor03">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"  *ngIf="(!isAdmin)">
+                    <a class="nav-link" routerLink="products"><i class="fas fa-clipboard-list fa-lg"></i><span> Products</span></a>
+                </li>
+                <li class="nav-item"  *ngIf="(!isAdmin)">
+                    <a class="nav-link" routerLink="cart"><i class="fas fa-shopping-cart fa-lg"></i> Cart</a>
+                </li>
+                <!-- (click)="usersInActiveTab()"-->
+                <li class="nav-item" *ngIf="(isAdmin)" >
+                    <a class="nav-link"routerLink="inventory" ><i class="fas fa-boxes fa-lg"></i> Inventory</a>
+                </li>
+                <!-- <li class="nav-item"  *ngIf="isadminstatus">
+                    <a class="nav-link" routerLink="users" (click)="usersActiveTab()"><i class="fas fa-users fa-lg"></i> Users</a>
+                </li> -->
+                <!-- *ngIf="isadminstatus" (click)="usersActiveTab()"-->
+                <li  class="nav-item dropdown" *ngIf="(isAdmin)">
+                    <a class="nav-link dropdown-toggle" (click)="removeLocal()" routerLink="server" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-users fa-lg"></i> Users</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item"  (click)="removeLocal()" routerLink="server"><i class="fas fa-cloud-download-alt"></i><span> Server</span></a>
+                        <a class="dropdown-item" (click)="setLocal()" routerLink="local"><i class="fas fa-hdd"></i><span> Local</span></a>
+                    </div>      
+                </li>
+            </ul>
+            <ul class="navbar-nav  ml-auto">
+                <li  class="nav-item" *ngIf="(!isLoggedIn)">
+                    <a class="nav-link"  routerLink="signup"><i class="fas fa-user-plus fa-sm"></i> Sing Up</a>
+                </li>
+                <li class="nav-item" *ngIf="(!isLoggedIn)">
+                    <a class="nav-link " routerLink="login"><i class="fas fa-sign-in-alt fa-lg"></i> Login</a>
+                </li>
+                <!-- <button *ngIf="this.loggedinStatus" (click)="logout()"type="button" class="btn btn-secondary bg-transparent border-0 "><i class="fas fa-sign-out-alt fa-lg"></i> Logout</button> -->
+                <!-- *ngIf="this.loggedinStatus" (click)="logout()" *ngIf="(checkGuest())" {{this.isCurrent.toLowerCase()}}-->
+                <!-- class="nav-item" style="font-size: 17px;" -->
+                <li class="nav-item" *ngIf="(isLoggedIn)">
+                    <a  class="nav-link" (click)="logout()" *ngIf="(checkGuest())"><i class="fas fa-sign-out-alt fa-lg"></i> Logout {{ this.isCurrentUserName.toLowerCase() }}</a>
+                </li>               
+            </ul>
+        </div>
+    </div>
+</nav>

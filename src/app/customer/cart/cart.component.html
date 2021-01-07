@@ -1,0 +1,30 @@
+<h5 class="text-center"  *ngIf="getTotal()"> Your Cart</h5>
+<h5 class="text-center"  *ngIf="(!getTotal())"> Your Cart is Empty</h5>
+<div class="container w-50" *ngIf="getTotal()">
+    <table class="table border table-hover">
+        <thead>
+        <tr>
+            <th scope="col" class="text-center">Product</th>
+            <th scope="col" class="text-center">Total</th>
+            <th scope="col" class="text-center" colspan="4">Quatity</th>
+            
+        </tr>
+        </thead>
+        <tbody>
+            <tr  *ngFor="let cartList of cart" >
+            <td ><img [src]="cartList.imgPath" alt="photo" class="img-fluid center-block p-1" width="40px" height="90px">   {{ cartList.name }}</td>
+            <td  class="text-center"> {{ cartList.price | currency: 'INR' }}</td>
+            <td  class="text-center" ><button class="btn m-0 p-0" *ngIf="!(cartList.quatity<=0)" type="button" (click)="minusQuantity(cartList.id)"><i   class="fas fa-minus-square fa-lg"></i></button></td>
+            <td  class="text-center">{{ cartList.quatity }} </td>
+            <td  class="text-center"><button class="btn m-0 p-0" *ngIf="!(getOriginalStock(cartList.id))" type="button" (click)="plusQuantity(cartList.id)"><i  class="fas fa-plus-square fa-lg"></i></button></td>
+            <td  class="text-center"><button class="btn m-0 p-0"  type="button"  (click)="deleteQuantity(cartList.id)"><i class="fas fa-trash-alt fa-lg"></i></button></td>
+            </tr>
+            <!-- " -->
+            <tr>
+                <td class="text-center">Total</td>
+                <td></td>
+                <td class="text-center" colspan="4">{{ this.total | currency: 'INR' }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

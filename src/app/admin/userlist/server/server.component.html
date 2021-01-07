@@ -1,0 +1,8 @@
+<h5 class="text-center mt-2 text-primary">List of Users</h5>
+<nav class="nav flex-column nav-bar ml-5 w-25 float-left">
+    <ul class="navbar-nav">
+        
+        <li class="nav-item" *ngFor="let user of UsersList" [routerLink]="['details',user.id]"><a class="nav-link text-warning" >{{user.name}}</a></li>
+    </ul>
+</nav>
+<router-outlet></router-outlet>

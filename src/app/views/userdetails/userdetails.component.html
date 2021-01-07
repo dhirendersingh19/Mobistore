@@ -1,0 +1,87 @@
+<div class="w-50 float-left" *ngIf="((!isLocal)&&(!loading))">
+    <h4 class="text-success">{{ UsersList.name }}</h4>
+    <table class="table table-default table-hover">
+        <tbody>
+            <tr>
+                <th scope="row">ID</th>
+                <td>{{ UsersList.id }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Username</th>
+                <td>{{ UsersList.username }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Email</th>
+                <td>{{ UsersList.email }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Phone</th>
+                <td>{{ UsersList.phone }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Address</th>
+                <td>
+                    <div class="row">
+                        <span class="col-3">Street : </span>
+                        <span class="col-4">{{ UsersList.address.street}}</span>
+                    </div>
+                    <div class="row">
+                        <span class="col-3">Suite : </span>
+                        <span class="col-4">{{ UsersList.address.suite }}</span>
+                    </div>
+                    <div class="row">
+                        <span class="col-3">City : </span>
+                        <span class="col-4">{{ UsersList.address.city }}</span>
+                    </div>
+                    <div class="row">
+                        <span class="col-3">Zipcode : </span>
+                        <span class="col-5">{{ UsersList.address.zipcode }}</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">Website</th>
+                <td>{{ UsersList.website }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Company Name</th>
+                <td>{{ UsersList.company.name }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Company Catch Phrase</th>
+                <td>{{ UsersList.company.catchPhrase }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="w-50 float-left" *ngIf="isLocal&&(!isSignUp)">
+    <h4 class="text-success">{{ this.name.toUpperCase() }}</h4>
+    <table class="table table-default table-hover">
+        <tbody>
+            <tr>
+                <td scope="row">Password </td>
+                <td>{{ password }}</td>
+            </tr>
+    </tbody>
+    </table>
+</div>
+<div class="w-50 float-left" *ngIf="(isLocal&&isSignUp)">
+    <h4 class="text-success">{{ this.data.email }}</h4>
+    <table class="table table-default table-hover">
+        <tbody>
+            <tr>
+                <td>Gender </td>
+                <td>{{ this.data.gender }}</td>
+            </tr>
+            <tr>
+                <td >Country </td>
+                <td>{{ this.data.country }}</td>
+            </tr>
+            <tr>
+                <td>Password </td>
+                <td>{{ this.data.password }}</td>
+            </tr>
+    </tbody>
+    </table>
+</div>
+<div class="w-50 float-left justify-content-center" *ngIf="((!isLocal)&&(loading))">Loading...</div>

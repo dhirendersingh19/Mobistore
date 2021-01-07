@@ -1,0 +1,38 @@
+<div *ngIf="(!nullProductList)">
+    <div class="container border border-secondary mt-1"  style=" border-radius: 10px; background: white;" *ngFor="let product of productsList">
+    <div class="row">
+            <div class="col-sm-3 text-center" style=" padding: 0; margin: 0;">
+                <img [src]="product.imgPath" alt="photo" class="img-fluid center-block p-1" width="90px" height="150px">
+            </div>
+            <div class="col-sm-5" style=" padding: 1px; margin: 0;">
+                <ul class="list-unstyled text-secondary">
+                    <h4 style="color: black;">{{product.name}}</h4>
+                    <li>{{product.ram}}GB RAM</li>
+                    <li>{{product.screenSize}} inch</li>
+                    <li>{{product.megaPixel}}</li>
+                    <li>{{product.battery}}mAh</li>
+                    <li>{{product.processor}}</li>
+                </ul>
+            </div>
+            <div class="col p-1 text-secondary justify-content-center" style=" padding: 1px; margin-top: 50px;">
+               <span>{{product.stock}} in stock </span>
+               <app-updatevalue *ngIf="(isAdmin&&isEdit)" [value]="product.stock" (updatevalue)="SetnewStock($event,product.id)"></app-updatevalue>
+            </div>
+
+            <div class="col-sm-2" style=" padding: 5px; margin: 0;">                
+                <div class="row h-25 p-1 text-secondary justify-content-center" style=" font-size: 25px; padding: 1px; margin: 0;">
+                    <p>{{product.price | currency: 'INR'}} </p>
+                </div>
+                <app-updatevalue *ngIf="(isAdmin&&isEdit)"  [value]="product.price" (updatevalue)="SetnewPrice($event,product.id)" ></app-updatevalue>
+                <div class="row mx-auto m-1 justify-content-center">
+                    <button *ngIf="(!isAdmin)" class="btn btn-primary" (click)="addToCart(product.id)" [disabled]="getStock(product.id)"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                </div>
+                <div class="row mx-auto m-1 justify-content-center">
+                    <button  *ngIf="(isAdmin&&isEdit)" class="btn btn-secondary"  (click)="delete(product.id)"><i class="fas fa-trash"></i> Delete</button>
+                </div>
+            </div>
+    </div>
+    </div>
+</div>
+
+<div *ngIf="nullProductList"><h5 class="text-center"> All Sold Out</h5></div>

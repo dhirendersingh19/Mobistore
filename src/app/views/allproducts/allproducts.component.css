@@ -1,0 +1,13 @@
+ul li {
+  text-indent: -1em;
+}
+
+ul li::before {
+  content: "\2022   ";
+  color: grey;
+  padding-left: 10px;
+}
+
+button {
+  width: 100%;
+}
