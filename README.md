@@ -2,8 +2,20 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.6.
 
-# [Live Demo](#live-demo)
-Here is a working live demo :  https://mobistore-9c39d.web.app/home
+## Demo URL
+Here is a working [live demo](https://mobistore-9c39d.web.app/home)\
+To login as dummy user, can use the below credential
+
+##### Admin User
+`username: admin`
+`password: admin`
+
+##### Normal User
+`username: rohit`
+`password: demo`
+
+##### New User SignUp
+use code as `code45`
 
 ## Setup
 
